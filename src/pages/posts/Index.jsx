@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import Card from "../../components/card/Card"
 import { useContext } from "react"
 import PostsContext from "../../contexts/PostsContext"
+import PostList from "../../components/PostList"
 
 export default function Index() {
 
-    const { posts, fetchPosts } = useContext(PostsContext)
+    const { fetchPosts } = useContext(PostsContext)
 
     useEffect(() => {
         fetchPosts()
@@ -19,13 +19,7 @@ export default function Index() {
                     <h1 className='title'>I nostri post</h1>
                 </div>
                 <div className="container">
-                    <ul className="post-list">
-                        {posts.map(post => (
-                            <li className="list-element" key={post.id}>
-                                <Card post={post} />
-                            </li>
-                        ))}
-                    </ul>
+                    <PostList />
                 </div>
             </section>
         </main>
